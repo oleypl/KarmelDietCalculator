@@ -30,117 +30,7 @@ struct ContentView: View {
                   
                   Spacer()
   
-                  HStack{
-                      VStack(){
-                          
-                          HStack{
-                              Text("Wilgotność")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Białko surowe")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Tłuszcz surowy")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Popiół surowy")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Włókno surowe")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Wapń")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                           }
-                          HStack{
-                              Text("Fosfor")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          
-                      }
-                      .frame(width: 170)
-                      .padding()
-
-                      VStack {
-                          
-                          HStack{
-                              Text("Węglowodany")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                           }
-                          HStack{
-                              Text("Sucha masa")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          
-                          
-                          HStack{
-                              Text("Białko \nSucha masa")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Tłuszcz \nSucha masa")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Węglowodany\nSucha masa")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          HStack{
-                              Text("Wapń : Fosfor")
-                              Spacer()
-                              TextField("", text: $karma.wilgotnosc)
-                                  .frame(width: 40,height: 25)
-                                  .border(.orange)
-                          }
-                          
-                          
-                      }
-                      .frame(width: 160)
-                      .padding()
-                      Spacer()
-                  }
-                  
+                  ExtractedView(karma: karma)
                   
 
                     Spacer()
@@ -158,15 +48,137 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-
-class Karma: ObservableObject {
-    @Published var wilgotnosc: String = ""
-    @Published var bialkoSurowe : String = ""
-    @Published var tluszSurowy : String = ""
-
-//    @Published var wilgotnosc = ("Wilgotność", 2)
-//    @Published var bialkoSurowe = ("Białko surowe", 2)
-//    @Published var tluszczSurowy = ("Wilgotność", 2)
+struct ExtractedView: View {
+    @StateObject var karma = Karma()
 
     
+    var body: some View {
+        HStack{
+            VStack(){
+                
+                HStack{
+                    Text("Wilgotność")
+                    Spacer()
+                    TextField("", text: $karma.wilgotnosc)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+
+                }
+                HStack{
+                    Text("Białko surowe")
+                    Spacer()
+                    TextField("", text: $karma.bialkoSurowe)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                    
+                }
+                HStack{
+                    Text("Tłuszcz surowy")
+                    Spacer()
+                    TextField("", text: $karma.tluszSurowy)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                }
+                HStack{
+                    Text("Popiół surowy")
+                    Spacer()
+                    TextField("", text: $karma.popiolSurowy)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                }
+                HStack{
+                    Text("Włókno surowe")
+                    Spacer()
+                    TextField("", text: $karma.wloknoSurowe)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                }
+                HStack{
+                    Text("Wapń")
+                    Spacer()
+                    TextField("", text: $karma.wapn)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                }
+                HStack{
+                    Text("Fosfor")
+                    Spacer()
+                    TextField("", text: $karma.fosfor)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                        .multilineTextAlignment(.center)
+                        .keyboardType(.decimalPad)
+                }
+                
+            }
+            .frame(width: 175)
+            .padding(.leading)
+            
+            VStack {
+                
+                HStack{
+                    Text("Węglowodany")
+                    Spacer()
+                    Text(karma.weglowodany)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                }
+                HStack{
+                    Text("Sucha masa")
+                    Spacer()
+                    Text(karma.suchaMasa)
+                        .frame(width: 46,height: 25)
+                        .border(.orange)
+                }
+                
+                Group{
+                    HStack{
+                        Text("Białko \nSucha masa")
+                        Spacer()
+                        Text(karma.bialkoSuchaMasa)
+                            .frame(width: 46,height: 25)
+                            .border(.orange)
+                    }
+                    HStack{
+                        Text("Tłuszcz \nSucha masa")
+                        Spacer()
+                        Text(karma.tluszczSuchaMasa)
+                            .frame(width: 46,height: 25)
+                            .border(.orange)
+                    }
+                    HStack{
+                        Text("Węglowodany\nSucha masa")
+                        Spacer()
+                        Text(karma.weglowodanySuchaMasa)
+                            .frame(width: 46,height: 25)
+                            .border(.orange)
+                    }
+                    HStack{
+                        Text("Wapń : Fosfor")
+                        Spacer()
+                        Text(karma.wapnFosfor)
+                            .frame(width: 46,height: 25)
+                            .border(.orange)
+                    }
+                }
+                
+                
+            }
+            .frame(width: 175)
+            .padding()
+            Spacer()
+        }
+    }
 }
