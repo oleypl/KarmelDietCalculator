@@ -12,6 +12,7 @@
 		907ED0222911987D00B0B332 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 907ED0212911987D00B0B332 /* Assets.xcassets */; };
 		907ED0252911987D00B0B332 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 907ED0242911987D00B0B332 /* Preview Assets.xcassets */; };
 		907ED02F2912749000B0B332 /* Karma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907ED02E2912749000B0B332 /* Karma.swift */; };
+		907ED0322912AA4400B0B332 /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907ED0312912AA4400B0B332 /* LayoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		907ED0212911987D00B0B332 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		907ED0242911987D00B0B332 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		907ED02E2912749000B0B332 /* Karma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karma.swift; sourceTree = "<group>"; };
+		907ED0312912AA4400B0B332 /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,6 @@
 				907ED030291274AF00B0B332 /* Views */,
 				907ED02D2912748700B0B332 /* Model */,
 				907ED01D2911987B00B0B332 /* KarmelDietCalculatorApp.swift */,
-				907ED01F2911987B00B0B332 /* ContentView.swift */,
 				907ED0212911987D00B0B332 /* Assets.xcassets */,
 				907ED0232911987D00B0B332 /* Preview Content */,
 			);
@@ -82,6 +83,8 @@
 		907ED030291274AF00B0B332 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				907ED0312912AA4400B0B332 /* LayoutView.swift */,
+				907ED01F2911987B00B0B332 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907ED0322912AA4400B0B332 /* LayoutView.swift in Sources */,
 				907ED02F2912749000B0B332 /* Karma.swift in Sources */,
 				907ED0202911987B00B0B332 /* ContentView.swift in Sources */,
 				907ED01E2911987B00B0B332 /* KarmelDietCalculatorApp.swift in Sources */,

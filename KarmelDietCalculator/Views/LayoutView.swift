@@ -1,60 +1,39 @@
 //
-//  ContentView.swift
+//  LayoutView.swift
 //  KarmelDietCalculator
 //
-//  Created by Michal on 01/11/2022.
+//  Created by Michal on 02/11/2022.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var karma = Karma()
-    
 
-    var body: some View {
-        ZStack{
-              VStack {
-                  LinearGradient(gradient: Gradient(colors: [Color.white,Color.orange]), startPoint: .top, endPoint: .bottom)
-                      .frame(width: UIScreen.main.bounds.width, height: 180, alignment: .center)
-                      .clipped()
-                      .overlay(
-                          Image("karmelek")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
-                            .offset(y: 90)
-                      )
-                      .edgesIgnoringSafeArea(.all)
-                  
-
-                  
-                  Spacer()
-  
-                  ExtractedView(karma: karma)
-                  
-
-                    Spacer()
-                  
-                  
-               }
-            }
-         }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-
-struct ExtractedView: View {
+struct LayoutView: View {
     @StateObject var karma = Karma()
+    @State var error : String
 
+    func sumOfAll(){
+            if(karma.percSum() > 100) {
+                error = "Suma składników przekracza 100%"
+            }
+        else {
+            error = ""
+        }
+    }
     
     var body: some View {
+        
+        Text(error)
+        .foregroundColor(.red)
+        .frame(height: 30)
+        
         HStack{
+           
+            
             VStack(){
+                
+                Text("Dane wejściowe")
+                    .fontWeight(.bold)
                 
                 HStack{
                     Text("Wilgotność")
@@ -64,6 +43,10 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.wilgotnosc) { newValue in
+                            sumOfAll()
+                        }
+                    
 
                 }
                 HStack{
@@ -74,6 +57,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.bialkoSurowe) { newValue in
+                            sumOfAll()
+                        }
                     
                 }
                 HStack{
@@ -84,6 +70,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.tluszSurowy) { newValue in
+                            sumOfAll()
+                        }
                 }
                 HStack{
                     Text("Popiół surowy")
@@ -93,6 +82,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.popiolSurowy) { newValue in
+                            sumOfAll()
+                        }
                 }
                 HStack{
                     Text("Włókno surowe")
@@ -102,6 +94,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.wloknoSurowe) { newValue in
+                            sumOfAll()
+                        }
                 }
                 HStack{
                     Text("Wapń")
@@ -111,6 +106,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.wapn) { newValue in
+                            sumOfAll()
+                        }
                 }
                 HStack{
                     Text("Fosfor")
@@ -120,6 +118,9 @@ struct ExtractedView: View {
                         .border(.orange)
                         .multilineTextAlignment(.center)
                         .keyboardType(.decimalPad)
+                        .onChange(of: karma.fosfor) { newValue in
+                            sumOfAll()
+                        }
                 }
                 
             }
@@ -127,7 +128,9 @@ struct ExtractedView: View {
             .padding(.leading)
             
             VStack {
-                
+                Text("Dane wyjściowe")
+                    .fontWeight(.bold)
+
                 HStack{
                     Text("Węglowodany")
                     Spacer()
@@ -180,5 +183,12 @@ struct ExtractedView: View {
             .padding()
             Spacer()
         }
+    }
+}
+
+
+struct LayoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        LayoutView(karma: Karma(), error: "")
     }
 }

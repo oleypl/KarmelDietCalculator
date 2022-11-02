@@ -17,6 +17,7 @@ class Karma: ObservableObject {
     @Published var fosfor : String = ""
 
 
+    
      var weglowodany: String {
         get {
             if let wilg = Double(wilgotnosc) {
@@ -98,5 +99,18 @@ class Karma: ObservableObject {
             return "0.00"
         }
    }
+    
+    
+    func percSum() -> Double {
+        let wilgotnosc = Double(wilgotnosc) ?? 0.00
+        let bialkoSurowe = Double(bialkoSurowe) ?? 0.00
+        let tluszSurowy = Double(tluszSurowy) ?? 0.00
+        let popiolSurowy = Double(popiolSurowy) ?? 0.00
+        let wloknoSurowe = Double(wloknoSurowe) ?? 0.00
+        let wapn = Double(wapn) ?? 0.00
+        let fosfor = Double(fosfor) ?? 0.00
+      
+        return wilgotnosc + bialkoSurowe + tluszSurowy + popiolSurowy + wloknoSurowe + wapn + fosfor
+    }
     
 }
